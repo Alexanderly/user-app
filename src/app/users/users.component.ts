@@ -9,27 +9,26 @@ import { IUser } from '../interfaces/IUser';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss'], // теперь scss
+  styleUrls: ['./users.component.scss'], //    теперь scss
 })
 export class UsersComponent implements OnInit, OnDestroy {
   users: IUser[] = [];
-  private usersSub?: Subscription; // подписка
+  private usersSub?: Subscription; //подписка
 
   constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
-    // сохраняем подписку в переменную
     this.usersSub = this.usersService.getUsers().subscribe(data => {
       this.users = data;
     });
   }
 
   ngOnDestroy(): void {
-    // отписываемся
+    //   отписываемся
     this.usersSub?.unsubscribe();
   }
 
   trackByFn(index: number, user: IUser): number {
-    return index; // используем trackBy для *ngFor
+    return index; //  trackBy
   }
 }
