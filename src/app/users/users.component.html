@@ -1,7 +1,6 @@
-<div *ngFor="let user of users">
-    <p>Name: {{ user.name }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>Phone: {{ user.phone }}</p>
-    <p>Address: {{ user.city }}, {{ user.street }}</p>
-  </div>
-  
+<div class="users-list" *ngFor="let user of users; trackBy: trackByFn">
+  <p><strong>Name:</strong> {{ user.name }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Phone:</strong> {{ user.phone }}</p>
+  <p><strong>Address:</strong> {{ user.address.city }}, {{ user.address.street }}</p>
+</div>
